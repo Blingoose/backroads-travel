@@ -214,8 +214,8 @@ Navbar
   height: 4rem;
   left: 0;
   top: 0;
-  background: var(--clr-white);
   z-index: 200;
+  background: var(--clr-white);
   box-shadow: var(--dark-shadow);
 }
 
@@ -227,10 +227,11 @@ Navbar
 .nav-header {
   display: flex;
   gap: 0 1rem;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0rem;
+  padding: 1rem 1.7rem;
 }
 
 .nav-toggle {
@@ -246,14 +247,38 @@ Navbar
   transform: scale(1.2);
 }
 
-.nav-links,
-.nav-icons {
-  display: flex;
-  display: none;
+.nav-link {
+  background: var(--clr-white);
+  display: block;
+  padding: 0.9rem 1.7rem;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  color: var(--clr-grey-1);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--clr-primary-1);
+  background: var(--clr-primary-8);
+  padding-left: 1.95rem;
+}
+
+.nav-links {
+  height: 0;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.show-links {
+  height: 268px;
 }
 
 .nav-icons {
+  /* display: flex; */
+  display: none;
 }
+
 /*
 =============== 
 Hero
@@ -676,7 +701,6 @@ Gallery
 .gallery-img {
   object-fit: cover;
   height: 17.5rem;
-  position: static;
   transition: var(--transition);
 }
 
