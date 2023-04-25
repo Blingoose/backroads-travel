@@ -86,6 +86,6 @@ scrollLinks.forEach((link) => {
     const id = e.target.getAttribute("href").slice(1);
     const element = document.getElementById(id);
 
-    smoothScroll(element, 800);
+    smoothScroll(element, 500);
   });
 });
