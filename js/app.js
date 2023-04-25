@@ -56,23 +56,9 @@ navBtn.addEventListener("click", () => {
 });
 
 // ********** smooth scroll ************
-function smoothScroll(target, duration) {
-  const startPosition = window.pageYOffset;
+function smoothScroll(target) {
   const targetPosition = target.offsetTop - 62;
-  const distance = targetPosition - startPosition;
-  let start = null;
-
-  function step(timestamp) {
-    if (!start) start = timestamp;
-    const progress = timestamp - start;
-    const percentage = Math.min(progress / duration, 1);
-    window.scrollTo(0, startPosition + distance * percentage);
-    if (progress < duration) {
-      window.requestAnimationFrame(step);
-    }
-  }
-
-  window.requestAnimationFrame(step);
+  window.scrollTo({ left: 0, top: targetPosition, behavior: "smooth" });
 }
 
 // select links
@@ -86,6 +72,6 @@ scrollLinks.forEach((link) => {
     const id = e.target.getAttribute("href").slice(1);
     const element = document.getElementById(id);
 
-    smoothScroll(element, 500);
+    smoothScroll(element);
   });
 });
