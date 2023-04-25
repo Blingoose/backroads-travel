@@ -755,7 +755,7 @@ Gallery
   object-fit: cover;
   height: 17.5rem;
   transition: var(--transition);
-  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.3s cubic-bezier(0.785, 0.535, 0.15, 1);
 }
 
 .gallery-icon {
