@@ -1,8 +1,10 @@
+// ********** gallery zoom img ************
 const imageContainers = document.querySelectorAll(".gallery-image-container");
 const checkboxes = document.querySelectorAll(".search-checkbox");
 const body = document.querySelector("body");
 const xmarks = document.querySelectorAll(".xmark");
 
+// slides
 const slidesObj = {
   // slide position name are assuming the "from" starting position.
   slideWD: "slide-in-up-right",
@@ -15,6 +17,7 @@ const slidesObj = {
   slideS: "slide-in-bottom",
 };
 
+// generate a random slide
 const randomSlideGenerator = () => {
   const slidesArr = Object.entries(slidesObj);
   const randomIndex = Math.floor(Math.random() * slidesArr.length);
@@ -53,6 +56,25 @@ navBtn.addEventListener("click", () => {
 });
 
 // ********** smooth scroll ************
+function smoothScroll(target, duration) {
+  const startPosition = window.pageYOffset;
+  const targetPosition = target.offsetTop - 62;
+  const distance = targetPosition - startPosition;
+  let start = null;
+
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    const progress = timestamp - start;
+    const percentage = Math.min(progress / duration, 1);
+    window.scrollTo(0, startPosition + distance * percentage);
+    if (progress < duration) {
+      window.requestAnimationFrame(step);
+    }
+  }
+
+  window.requestAnimationFrame(step);
+}
+
 // select links
 const scrollLinks = document.querySelectorAll(".scroll-link");
 scrollLinks.forEach((link) => {
@@ -63,14 +85,7 @@ scrollLinks.forEach((link) => {
 
     const id = e.target.getAttribute("href").slice(1);
     const element = document.getElementById(id);
-    //
-    let position = element.offsetTop - 62;
 
-    window.scrollTo({
-      left: 0,
-      // top: element.offsetTop,
-      top: position,
-      behavior: "smooth",
-    });
+    smoothScroll(element, 800);
   });
 });
