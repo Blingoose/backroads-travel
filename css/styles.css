@@ -908,9 +908,6 @@ Gallery
   -o-object-fit: cover;
   object-fit: cover;
   height: 17.5rem;
-  -webkit-transition: var(--transition);
-  -o-transition: var(--transition);
-  transition: var(--transition);
   -webkit-transition: all 0.3s cubic-bezier(0.785, 0.535, 0.15, 1);
   -o-transition: all 0.3s cubic-bezier(0.785, 0.535, 0.15, 1);
   transition: all 0.3s cubic-bezier(0.785, 0.535, 0.15, 1);
@@ -977,19 +974,9 @@ Gallery
   -ms-transform: translateX(0);
   transform: translateX(0);
   opacity: 1;
-  -webkit-transition-delay: 0.5s;
-  -o-transition-delay: 0.5s;
-  transition-delay: 0.5s;
-}
-
-.search-checkbox:not(:checked) + .inner-container .xmark {
-  -webkit-transition-delay: 0s;
-  -o-transition-delay: 0s;
-  transition-delay: 0s;
-}
-
-.search-checkbox:checked + .inner-container .xmark:hover {
-  color: var(--clr-primary-5);
+  transition: var(--transition);
+  -webkit-transition: var(--transition);
+  -o-transition: var(--transition);
 }
 
 .zoomed-image {
