@@ -44,8 +44,10 @@ checkboxes.forEach((checkbox) => {
       imageContainer.classList.add(randomSlide);
       navbar.classList.add("hide");
       xmark.addEventListener(
+        // event listener is only fired once.
         "transitionend",
         () => {
+          // add 'transition-delay: 0s' only after the xmark transition has ended.
           xmark.classList.add("no-delay");
         },
         { once: true }
@@ -57,7 +59,15 @@ checkboxes.forEach((checkbox) => {
       imageContainer.classList.remove(...slideClasses);
       navbar.classList.remove("hide");
       xmark.classList.remove("no-delay");
-      body.classList.remove("no-scroll");
+      imageContainer.addEventListener(
+        // event listener is only fired once.
+        "transitionend",
+        () => {
+          // remove 'overflow: hidden' only after the image transition has ended.
+          body.classList.remove("no-scroll");
+        },
+        { once: true }
+      );
     }
   });
 });
