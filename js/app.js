@@ -1,5 +1,13 @@
+// ********** nav toggle ************
+// select button and links
+const navBtn = document.getElementById("nav-toggle");
+const links = document.getElementById("nav-links");
+// add event listener
+navBtn.addEventListener("click", () => {
+  links.classList.toggle("show-links");
+});
+
 // ********** gallery zoom img ************
-const imageContainers = document.querySelectorAll(".gallery-image-container");
 const checkboxes = document.querySelectorAll(".search-checkbox");
 const body = document.querySelector("body");
 const xmarks = document.querySelectorAll(".xmark");
@@ -29,13 +37,26 @@ checkboxes.forEach((checkbox) => {
   checkbox.addEventListener("click", (e) => {
     const randomSlide = randomSlideGenerator();
     const imageContainer = checkbox.nextElementSibling;
+    const xmark = imageContainer.querySelector(".xmark");
+    const navbar = document.querySelector(".navbar");
     imageContainer.classList.toggle("zoomed-image");
     if (e.target.checked === true) {
       imageContainer.classList.add(randomSlide);
+      navbar.classList.add("hide");
+      xmark.addEventListener(
+        "transitionend",
+        () => {
+          xmark.classList.add("no-delay");
+        },
+        { once: true }
+      );
+
       body.classList.add("no-scroll");
     } else {
       const slideClasses = Object.values(slidesObj);
       imageContainer.classList.remove(...slideClasses);
+      navbar.classList.remove("hide");
+      xmark.classList.remove("no-delay");
       body.classList.remove("no-scroll");
     }
   });
@@ -45,15 +66,6 @@ checkboxes.forEach((checkbox) => {
 // select span
 const date = (document.getElementById("date").innerHTML =
   new Date().getFullYear());
-
-// ********** nav toggle ************
-// select button and links
-const navBtn = document.getElementById("nav-toggle");
-const links = document.getElementById("nav-links");
-// add event listener
-navBtn.addEventListener("click", () => {
-  links.classList.toggle("show-links");
-});
 
 // ********** smooth scroll ************
 function smoothScroll(target) {

@@ -977,6 +977,15 @@ Gallery
   transition: var(--transition);
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
+  transition-delay: 0.6s;
+}
+
+.search-checkbox:checked + .inner-container .xmark.no-delay {
+  transition-delay: 0s;
+}
+
+.search-checkbox:checked + .inner-container .xmark:hover {
+  color: var(--clr-primary-5);
 }
 
 .zoomed-image {
